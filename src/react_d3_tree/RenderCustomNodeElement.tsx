@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+const filterd_node = { fill: '#FFF2B3', stroke: '#FFF2B3' };
+const default_node = { fill: '#CF2979', stroke: '#95275B' };
 
 const getNodeStyle = (nodeData: any) => {
     if (nodeData.value > 10) {
-        return { fill: '#CF2979', stroke: '#95275B' };
+        return default_node;
     } else if (nodeData.value <= 5) {
-        return { fill: '#FFF2B3', stroke: '#FFF2B3' };
+        return filterd_node;
     } else {
-        return { fill: '#CF2979', stroke: '#95275B' };
+        return default_node;
     }
 };
 
@@ -23,22 +24,10 @@ const nodeStyle = {
 function RenderCustomNodeElement(nodeDatum: any) {
     const { value } = nodeDatum;
     const style = getNodeStyle(nodeDatum);
-    // const [isHovered, setIsHovered] = useState(true);
-
-    // const handleMouseEnter = () => {
-    //     setIsHovered(true);
-    // };
-
-    // const handleMouseLeave = () => {
-    //     setIsHovered(false);
-    // };
 
     return (
-        <g 
-        // onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-        >
+        <g>
             <rect x={-15} y={-15} width={30} height={30} rx={5} ry={5}  {...nodeStyle.shapeProps} style={style} />
-            {/* {isHovered && <text x={-15} y={20}>{value}</text>} */}
         </g>
     );
 }

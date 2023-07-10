@@ -9,25 +9,33 @@ const treeData = {
       value: 10,
       children: [
         { name: 'Grandchild 1', value: 5 },
-        { name: 'Grandchild 2', value: 8,children: [
-          { name: 'Grandchild 1', value: 5 },
-          { name: 'Grandchild 2', value: 8 ,children: [
+        {
+          name: 'Grandchild 2', value: 8, children: [
             { name: 'Grandchild 1', value: 5 },
-            { name: 'Grandchild 2', value: 8 }
-          ]}
-        ] }
+            {
+              name: 'Grandchild 2', value: 8, children: [
+                { name: 'Grandchild 1', value: 5 },
+                { name: 'Grandchild 2', value: 8 }
+              ]
+            }
+          ]
+        }
       ]
     },
     {
       name: 'Child 2',
       value: 12,
       children: [
-        { name: 'Grandchild 3', value: 15,children: [
-          { name: 'Grandchild 3', value: 15 ,children: [
-            { name: 'Grandchild 1', value: 5 },
-            { name: 'Grandchild 2', value: 8 }
-          ]}
-        ] },
+        {
+          name: 'Grandchild 3', value: 15, children: [
+            {
+              name: 'Grandchild 3', value: 15, children: [
+                { name: 'Grandchild 1', value: 5 },
+                { name: 'Grandchild 2', value: 8 }
+              ]
+            }
+          ]
+        },
         { name: 'Grandchild 4', value: 3 }
       ]
     },
@@ -35,16 +43,20 @@ const treeData = {
       name: 'Child 2',
       value: 12,
       children: [
-        { name: 'Grandchild 3', value: 15,children: [
-          { name: 'Grandchild 3', value: 15 ,children: [
-            { name: 'Grandchild 1', value: 5 },
-            { name: 'Grandchild 2', value: 8 }
-          ]}
-        ] },
+        {
+          name: 'Grandchild 3', value: 15, children: [
+            {
+              name: 'Grandchild 3', value: 15, children: [
+                { name: 'Grandchild 1', value: 5 },
+                { name: 'Grandchild 2', value: 8 }
+              ]
+            }
+          ]
+        },
         { name: 'Grandchild 4', value: 3 }
       ]
     },
-    
+
   ]
 };
 
@@ -61,7 +73,7 @@ const GraphView = () => {
         renderCustomNodeElement={(nodeProps) => RenderCustomNodeElement(nodeProps.nodeDatum)}
         zoomable={true}
         zoom={1}
-        
+
       />
     </div>
   );

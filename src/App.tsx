@@ -1,5 +1,5 @@
 import './App.css';
-import GraphView from './GraphView';
+import GraphView from './react_d3_tree/GraphView';
 
 function App() {
   return (
