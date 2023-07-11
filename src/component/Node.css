@@ -1,0 +1,43 @@
+.default-node {
+    background-color: #CF2979;
+    color: #fff;
+    border: #8D1C53 solid 2px;
+    border-radius: 5px;
+    padding: 8px;
+    height: 3em;
+    min-width: 10em;
+    max-width: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.filterd-node {
+    background-color: #FFF2B3;
+    color: #8D1C53;
+    border: #FFF2B3 solid 2px;
+    border-radius: 5px;
+    padding: 8px;
+    height: 3em;
+    min-width: 10em;
+    max-width: 15em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+}
+
+.default-edge {
+    color: #906489;
+}
+
+.node {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.node span {
+    text-align: center;
+}

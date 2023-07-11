@@ -1,12 +1,11 @@
 import './App.css';
-import ReactFlow from './react-flow/ReactFlow';
-import GraphView from './react_d3_tree/GraphView';
+import LayoutFlow from './component/LayoutFlow';
 
 function App() {
   return (
     <div >
       <header>
-        <ReactFlow/>
+        <LayoutFlow></LayoutFlow>
       </header>
     </div>
   );

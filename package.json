@@ -10,6 +10,7 @@
     "@types/node": "^16.18.38",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "dagre": "^0.8.5",
     "react": "^18.2.0",
     "react-d3-tree": "^3.6.1",
     "react-dom": "^18.2.0",
@@ -43,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/dagre": "^0.7.48"
   }
 }
