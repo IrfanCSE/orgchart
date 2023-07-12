@@ -24,15 +24,15 @@ const nodeDefault = { className: 'default-node', type: 'customNode' };
 const Graph = ({ data }: any) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  console.log('data.edges')
-  console.log(data.edges[0])
-  console.log(data.edges[0].id)
+  const initialNodes = data.nodes.map((node: any) => {
+    const treePosition_x = Math.floor(Math.random() * 501);
+    const treePosition_y = Math.floor(Math.random() * 501);
+    return { ...nodeDefault, id: node.id, position: { x: treePosition_x, y: treePosition_y }, data: { label: node.label, node: node } }
+  });
 
-  const initialNodes = data.nodes.map((node: any) => { return { ...nodeDefault, id: node.id, position: { x: 100, y: 100 }, data: { label: node.label, node: node } } });
-  const initialEdges = data.edges.map((edge: any) => { return { ...edgeDefault, id: edge.id, source: edge.source, target: edge.target } })
-
-  console.log(initialEdges)
-  console.log(initialNodes)
+  const initialEdges = data.edges.map((edge: any) => {
+    return { ...edgeDefault, id: edge.id, source: edge.source, target: edge.target }
+  })
 
   const { fitView } = useReactFlow();
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
@@ -61,7 +61,7 @@ const Graph = ({ data }: any) => {
 
   const filter = () => {
     const filterdNode = nodes.map(node => {
-      if (node.data.value > 50)
+      if (node.data.node.value > 50)
         return { ...node, className: 'filterd-node' }
 
       return { ...node };

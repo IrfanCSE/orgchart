@@ -2,9 +2,7 @@ import { Handle, Position } from 'reactflow';
 import './Node.css'
 
 export default function CustomNode({ data }: any) {
-    const handleTarget = () => data.value && <Handle type="target" position={Position.Top} isConnectable={false} />
-    const handleSource = () => !data.noChild && <Handle type="source" position={Position.Bottom} isConnectable={false} />
-
+    console.log(data)
     // generate custome label
     const label = () => {
         if (data.label.length <= 20)
@@ -15,11 +13,11 @@ export default function CustomNode({ data }: any) {
 
     return (
         <>
-            {handleTarget()}
+            {data.node.value && <Handle type="target" position={Position.Top} isConnectable={false} />}
             <div className='node'>
-                <span>{label()} {!!data.value ? `[${data.value}%]` : ''}</span>
+                <span>{label()} {!!data.node.value ? `[${data.node.value}%]` : ''}</span>
             </div>
-            {handleSource()}
+            {!data.node.noChild && <Handle type="source" position={Position.Bottom} isConnectable={false} />}
         </>
     );
 }
