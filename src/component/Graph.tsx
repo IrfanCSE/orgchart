@@ -61,7 +61,7 @@ const Graph = ({ data }: any) => {
 
   const filter = () => {
     const filterdNode = nodes.map(node => {
-      if (node.data.node.value > 50)
+      if (node.data.value > 50)
         return { ...node, className: 'filterd-node' }
 
       return { ...node };
@@ -94,7 +94,7 @@ const Graph = ({ data }: any) => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        fitView
+        // fitView
         nodeTypes={nodeTypes}
       >
         <Panel position="top-right">
