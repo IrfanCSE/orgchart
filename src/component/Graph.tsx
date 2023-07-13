@@ -27,7 +27,7 @@ const Graph = ({ data }: any) => {
   const initialNodes = data.nodes.map((node: any) => {
     const treePosition_x = Math.floor(Math.random() * 501);
     const treePosition_y = Math.floor(Math.random() * 501);
-    return { ...nodeDefault, id: node.id, position: { x: treePosition_x, y: treePosition_y }, data: { label: node.label, node: node } }
+    return { ...nodeDefault, id: node.id, position: { x: treePosition_x, y: treePosition_y }, data: { label: node.label, ...node } }
   });
 
   const initialEdges = data.edges.map((edge: any) => {

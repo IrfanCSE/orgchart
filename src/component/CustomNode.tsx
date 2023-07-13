@@ -13,11 +13,11 @@ export default function CustomNode({ data }: any) {
 
     return (
         <>
-            {data.node.value && <Handle type="target" position={Position.Top} isConnectable={false} />}
+            {data.value && <Handle type="target" position={Position.Top} isConnectable={false} />}
             <div className='node'>
-                <span>{label()} {!!data.node.value ? `[${data.node.value}%]` : ''}</span>
+                <span>{label()} {!!data.value ? `[${data.value}%]` : ''}</span>
             </div>
-            {!data.node.noChild && <Handle type="source" position={Position.Bottom} isConnectable={false} />}
+            {!data.noChild && <Handle type="source" position={Position.Bottom} isConnectable={false} />}
         </>
     );
 }
