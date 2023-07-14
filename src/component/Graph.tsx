@@ -1,21 +1,19 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 import ReactFlow, {
   ReactFlowProvider,
   Panel,
   useNodesState,
   useEdgesState,
   useReactFlow,
-  Node,
-  Edge,
   MarkerType,
-  Background,
   Controls,
+  Background,
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
 import './Node.css';
 import CustomNode from './CustomNode';
-import { GetLayoutedElements } from './layout';
+import { GetLayoutedElements, Layout } from './layout';
 
 
 const edgeDefault = { type: 'step', markerEnd: { type: MarkerType.ArrowClosed, color: '#906489' }, style: { stroke: '#906489' } };
@@ -24,10 +22,9 @@ const nodeDefault = { className: 'default-node', type: 'customNode' };
 const Graph = ({ data }: any) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  let position = 100;
   const initialNodes = data.nodes.map((node: any) => {
-    const treePosition_x = Math.floor(Math.random() * 501);
-    const treePosition_y = Math.floor(Math.random() * 501);
-    return { ...nodeDefault, id: node.id, position: { x: treePosition_x, y: treePosition_y }, data: { label: node.label, ...node } }
+    return { ...nodeDefault, id: node.id, position: { x: position += 30, y: position += 30 }, data: { label: node.label, layout: Layout.TB, ...node } }
   });
 
   const initialEdges = data.edges.map((edge: any) => {
@@ -40,10 +37,15 @@ const Graph = ({ data }: any) => {
 
   const onLayout = useCallback(
     (direction: any) => {
+
       const layouted = GetLayoutedElements(nodes, edges, { direction });
+
+      layouted.nodes.forEach(node => node.data.layout = direction)
 
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
+
+      console.log(nodes)
 
       window.requestAnimationFrame(() => {
         fitView();
@@ -81,7 +83,7 @@ const Graph = ({ data }: any) => {
   // default vertical layout selected
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (buttonRef.current != null) buttonRef.current?.click();
+      if (buttonRef.current) buttonRef.current?.click();
     }, 10);
 
     return () => clearTimeout(timer);
@@ -94,12 +96,12 @@ const Graph = ({ data }: any) => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        // fitView
+        fitView
         nodeTypes={nodeTypes}
       >
         <Panel position="top-right">
-          <button ref={buttonRef} className='btn' onClick={() => onLayout('TB')}>vertical layout</button>
-          <button onClick={() => onLayout('LR')}>horizontal layout</button>
+          <button ref={buttonRef} className='btn' onClick={() => onLayout(Layout.TB)}>vertical layout</button>
+          <button onClick={() => onLayout(Layout.LR)}>horizontal layout</button>
         </Panel>
 
         <Panel position='top-left'>
@@ -107,7 +109,7 @@ const Graph = ({ data }: any) => {
           <button className='btn' onClick={() => filter()}>Filter</button>
         </Panel>
         <Controls />
-
+        <Background/>
       </ReactFlow>
     </div>
   );
