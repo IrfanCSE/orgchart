@@ -14,9 +14,10 @@ import 'reactflow/dist/style.css';
 import './Node.css';
 import CustomNode from './CustomNode';
 import { GetLayoutedElements, Layout } from './layout';
+import CustomEdge from './CustomEdge';
 
 
-const edgeDefault = { type: 'step', markerEnd: { type: MarkerType.ArrowClosed, color: '#906489' }, style: { stroke: '#906489' } };
+const edgeDefault = { type: 'customEdge', markerEnd: { type: MarkerType.ArrowClosed, color: '#906489' }, style: { stroke: '#906489' } };
 const nodeDefault = { className: 'default-node', type: 'customNode' };
 
 const Graph = ({ data }: any) => {
@@ -28,7 +29,7 @@ const Graph = ({ data }: any) => {
   });
 
   const initialEdges = data.edges.map((edge: any) => {
-    return { ...edgeDefault, id: edge.id, source: edge.source, target: edge.target }
+    return { ...edgeDefault, id: edge.id, source: edge.source, target: edge.target, ...edge }
   })
 
   const { fitView } = useReactFlow();
@@ -45,8 +46,6 @@ const Graph = ({ data }: any) => {
       setNodes([...layouted.nodes]);
       setEdges([...layouted.edges]);
 
-      console.log(nodes)
-
       window.requestAnimationFrame(() => {
         fitView();
       });
@@ -57,6 +56,13 @@ const Graph = ({ data }: any) => {
   const nodeTypes = useMemo(
     () => ({
       customNode: CustomNode,
+    }),
+    []
+  );
+
+  const edgeTypes = useMemo(
+    () => ({
+      customEdge: CustomEdge,
     }),
     []
   );
@@ -98,6 +104,7 @@ const Graph = ({ data }: any) => {
         onEdgesChange={onEdgesChange}
         fitView
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
       >
         <Panel position="top-right">
           <button ref={buttonRef} className='btn' onClick={() => onLayout(Layout.TB)}>vertical layout</button>
@@ -109,7 +116,7 @@ const Graph = ({ data }: any) => {
           <button className='btn' onClick={() => filter()}>Filter</button>
         </Panel>
         <Controls />
-        <Background/>
+        <Background />
       </ReactFlow>
     </div>
   );

@@ -13,7 +13,7 @@ export default function CustomNode({ data }: any) {
 
     return (
         <>
-            {data.value && <Handle type="target" position={data.layout === Layout.TB ? Position.Top : Position.Left} isConnectable={false} />}
+            {data.label && <Handle type="target" position={data.layout === Layout.TB ? Position.Top : Position.Left} isConnectable={false} />}
             <div className='node'>
                 <span>{label()} {!!data.value ? `[${data.value}%]` : ''}</span>
             </div>
