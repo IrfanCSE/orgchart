@@ -17,7 +17,7 @@ import { GetLayoutedElements, Layout } from './layout';
 import CustomEdge from './CustomEdge';
 
 
-const edgeDefault = { type: 'customEdge', markerEnd: { type: MarkerType.ArrowClosed, color: '#906489' }, style: { stroke: '#906489' } };
+const edgeDefault = {  type:'step', markerEnd: { type: MarkerType.ArrowClosed, color: '#906489' }, style: { stroke: '#906489' } };
 const nodeDefault = { className: 'default-node', type: 'customNode' };
 
 const Graph = ({ data }: any) => {
@@ -104,7 +104,7 @@ const Graph = ({ data }: any) => {
         onEdgesChange={onEdgesChange}
         fitView
         nodeTypes={nodeTypes}
-        edgeTypes={edgeTypes}
+        // edgeTypes={edgeTypes}
       >
         <Panel position="top-right">
           <button ref={buttonRef} className='btn' onClick={() => onLayout(Layout.TB)}>vertical layout</button>
