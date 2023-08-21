@@ -32,7 +32,7 @@ import { GraphComponent, GraphEditorInputMode, GraphInputMode, GraphItemTypes, G
 import '../lib/yFilesLicense'
 import { GraphComponentContext } from '../lib/GraphComponentContext'
 import loadGraph from '../lib/loadGraph.ts'
-import { useGraphSearch } from '../lib/use-graph-search'
+// import { useGraphSearch } from '../lib/use-graph-search'
 import { ContextMenuComponent } from './ContextMenuComponent'
 import { useTooltips } from '../lib/use-tooltips'
 import { NodeWithEdge } from '../App.tsx'
@@ -53,7 +53,7 @@ export default function ReactGraphComponent({
   // useTooltips(graphComponent)
 
   // register search on graph items
-  useGraphSearch(graphComponent, searchQuery)
+  // useGraphSearch(graphComponent, searchQuery)
 
   return (
     <div style={{ width: '100%', height: '100%' }}>

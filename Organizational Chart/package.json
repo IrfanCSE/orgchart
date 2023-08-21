@@ -14,7 +14,7 @@
     "react-dom": "^18.2.0",
     "jspdf": "^2.3.1",
     "svg2pdf.js": "^2.1.0",
-    "yfiles": "H:/yFiles-for-HTML-Complete-2.5.0.4-Evaluation/lib/yfiles-26.0.0+eval.tgz"
+    "yfiles": "H:/yFiles-for-HTML-Complete-2.5.0.4-Evaluation/lib/yfiles-25.0.4+eval.tgz"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
